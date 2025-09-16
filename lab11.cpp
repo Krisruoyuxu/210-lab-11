@@ -9,6 +9,12 @@ struct Shop{ //Create our struct which is called "Shop" and stores the basic inf
     int ID;
     double *ratings; // A dynamic array the stores the ratings of the shop
 
+    ~Shop(){
+        if (ratings != nullptr){
+            delete [] ratings;
+        ratings = nullptr;
+        }
+    }
 };
 
 void input_shop(Shop *);
@@ -19,6 +25,8 @@ int main(){
     Shop Muji; // Create a shop called "Muji"
     Muji.ratings = new double[recent_20ratings];
     
+    input_shop();
+
     return 0;
 }
 
