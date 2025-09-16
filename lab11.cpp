@@ -15,6 +15,15 @@ void display_shop(Shop *);
 
 int main(){
      //We only keep the most recent 20 ratings stored in the array of the shop.
-    Shop *KFC = new Shop[recent_20ratings];
+    Shop Muji; // Create a shop called "Muji"
+    Muji.ratings = new double[recent_20ratings];
     return 0;
 }
+
+void input_shop(Shop *Muji){
+    string ipt;
+    cout << "Input the name for the Shop: "<<endl;
+    getline(cin, Muji->name);
+}
+
+void display_shop(Shop *){}
