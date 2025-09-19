@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream> // I add this because this program include "File Input & Output" this week as practise
 using namespace std;
 
 const int recent_20ratings = 20; 
@@ -7,7 +8,7 @@ struct Shop{ //Create our struct which is called "Shop" and stores the basic inf
     
     string name;
     int ID;
-    double *ratings; // A dynamic array the stores the each rating of the shop
+    int *ratings; // A dynamic array the stores the each rating of the shop, from 1-5, bad to great
 
     ~Shop(){
         if (ratings != nullptr){
@@ -23,9 +24,10 @@ void display_shop(Shop *);
 int main(){
      //We only keep the most recent 20 ratings stored in the array of the shop.
     Shop Muji; // Create a shop called "Muji"
-    Muji.ratings = new double[recent_20ratings];
+    Muji.ratings = new int[recent_20ratings];
     
     input_shop(&Muji);
+    display_shop(&Muji);
 
     return 0;
 }
@@ -41,5 +43,7 @@ void input_shop(Shop *Muji){
 void display_shop(Shop *Muji){
     cout << "The name of the shop is: " << Muji->name << endl;
     cout << "Shop ID:# " << Muji->ID << endl;
+    for (int i =0; i < recent_20ratings; i++){
 
+    }
 }
