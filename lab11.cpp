@@ -26,7 +26,8 @@ int main(){
      //We only keep the most recent 20 ratings stored in the array of the shop.
     Shop Muji; // Create a shop called "Muji"
     Muji.ratings = new int[recent_20ratings];
-    
+    ifstream fin("ratings.txt");
+
     input_shop(&Muji);
     display_shop(&Muji);
 
