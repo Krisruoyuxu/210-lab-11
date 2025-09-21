@@ -28,7 +28,7 @@ int main(){
     while (fin >> temp) {
         n++; // cout the num of elements
     }
-    cout << "There are " << n <<" elements " <<endl;
+    cout << "There are " << n <<" elements in the file. " <<endl;
     fin.close(); // close the file
 
     int* all_ratings = new int[n]; // Then add a dynamic array to store all the ratings 
@@ -39,12 +39,14 @@ int main(){
     }
     fin.close();
 
-
-    //We only keep the most recent 20 ratings stored in the array of the shop.
+    //We only keep the most recent 20 ratings stored in the array of the shop. ASSUME THE LAST 20 ARE THE MOST RECENT 20!
     Shop Muji; // Create a shop called "Muji"
     Muji.ratings = new int[recent_20ratings];
 
-    // we need to move the most recent 20 elements into our struct's ratings array
+    for (int i = 0; i < recent_20ratings; i++){ // find the most recent 20 ratings in all_ratings, and move them into our ratings
+        Muji.ratings[i] = *(all_ratings + (n - i - 1));
+    }
+    // Note: ASSUME THE LAST 20 ARE THE MOST RECENT 20! So it actually follows the reverse order
     
     input_shop(&Muji);
     display_shop(&Muji);
