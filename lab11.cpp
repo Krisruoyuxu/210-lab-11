@@ -9,6 +9,7 @@ struct Shop{ //Create our struct which is called "Shop" and stores the basic inf
     string name;
     int ID;
     int *ratings; // A dynamic array the stores the each rating of the shop, from 1-5, bad to great
+    int *allratings; // add one more dynamic array to store all the ratings?
 
     ~Shop(){
         if (ratings != nullptr){
