@@ -20,13 +20,19 @@ struct Shop{ //Create our struct which is called "Shop" and stores the basic inf
 
 void input_shop(Shop *);
 void display_shop(Shop *);
-void read_ratings_fromfile(Shop *);
 
 int main(){
      //We only keep the most recent 20 ratings stored in the array of the shop.
     Shop Muji; // Create a shop called "Muji"
     Muji.ratings = new int[recent_20ratings];
-    ifstream fin("ratings.txt");
+    ifstream fin("ratings.txt"); // read the txt file that stores the ratings
+    if (!fin) {
+    cerr << "Cannot open ratings.txt\n";
+    return 1; // exit
+}
+    for (int i = 0; i < recent_20ratings; i++){  // traverse the file and add the first 20 elements into the array 
+        fin >> Muji.ratings[i];
+    }
 
     input_shop(&Muji);
     display_shop(&Muji);
@@ -45,12 +51,10 @@ void input_shop(Shop *Muji){
 void display_shop(Shop *Muji){
     cout << "The name of the shop is: " << Muji->name << endl;
     cout << "Shop ID:# " << Muji->ID << endl;
+    cout << "The ratings are as follow: ";
     for (int i =0; i < recent_20ratings; i++){
-        cout << "The ratings are as follow: "<< *(Muji ->ratings+i) << " ";
+        cout << *(Muji ->ratings+i) << " ";
     }
     cout << endl;
 }
 
-void read_ratings_fromfile(Shop *){
-    
-}
