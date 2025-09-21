@@ -24,40 +24,34 @@ void display_shop(Shop *);
 int main(){
     // first read the txt file and see how many elements are in it
     int n = 0, temp; 
-    int* all_ratings = new int[n]; // and add a dynamic array to store all the ratings 
     ifstream fin("ratings.txt");
     while (fin >> temp) {
         n++; // cout the num of elements
-        fin >> all_ratings[n];
     }
     cout << "There are " << n <<" elements " <<endl;
-    cout << "They are: ";
-    for (int i = 0; i < n; i++){
-        cout << *(all_ratings+i);
-    }
     fin.close(); // close the file
+
+    int* all_ratings = new int[n]; // Then add a dynamic array to store all the ratings 
     
+    fin.open("ratings.txt"); // reread the file and add all the elements into the array
+    for (int i = 0; i < n; i++){
+        fin >> *(all_ratings+i);
+    }
+    fin.close();
+
+
     //We only keep the most recent 20 ratings stored in the array of the shop.
     Shop Muji; // Create a shop called "Muji"
     Muji.ratings = new int[recent_20ratings];
-    ifstream fin("ratings.txt"); // read the txt file that stores the ratings
-    if (!fin) {
-    cerr << "Cannot open ratings.txt\n";
-    return 1; // exit
-}
-    for (int i = 0; i < recent_20ratings; i++){  // traverse the file and add the first 20 elements into the array 
-        fin >> Muji.ratings[i];
-    }
+
+    // we need to move the most recent 20 elements into our struct's ratings array
     
     input_shop(&Muji);
     display_shop(&Muji);
 
-    for ()
-        fin >> Muji.ratings[i]; // read the last 20 elements in the file(that represents the new 20 ratings
-    // and display it agian
-    display_shop(&Muji);
     
-    fin.close(); // close the file
+    
+    
 
     return 0;
 }
