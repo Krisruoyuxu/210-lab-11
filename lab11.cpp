@@ -37,7 +37,7 @@ int main(){
     input_shop(&Muji);
     display_shop(&Muji);
 
-    for (int i = 10; i < recent_20ratings+10; i++)
+    for ()
         fin >> Muji.ratings[i]; // read the last 20 elements in the file(that represents the new 20 ratings
     // and display it agian
     display_shop(&Muji);
