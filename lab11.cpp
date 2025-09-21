@@ -9,7 +9,6 @@ struct Shop{ //Create our struct which is called "Shop" and stores the basic inf
     string name;
     int ID;
     int *ratings; // A dynamic array the stores the each rating of the shop, from 1-5, bad to great
-    int *allratings; // add one more dynamic array to store all the ratings?
 
     ~Shop(){
         if (ratings != nullptr){
@@ -23,7 +22,22 @@ void input_shop(Shop *);
 void display_shop(Shop *);
 
 int main(){
-     //We only keep the most recent 20 ratings stored in the array of the shop.
+    // first read the txt file and see how many elements are in it
+    int n = 0, temp; 
+    int* all_ratings = new int[n]; // and add a dynamic array to store all the ratings 
+    ifstream fin("ratings.txt");
+    while (fin >> temp) {
+        n++; // cout the num of elements
+        fin >> all_ratings[n];
+    }
+    cout << "There are " << n <<" elements " <<endl;
+    cout << "They are: ";
+    for (int i = 0; i < n; i++){
+        cout << *(all_ratings+i);
+    }
+    fin.close(); // close the file
+    
+    //We only keep the most recent 20 ratings stored in the array of the shop.
     Shop Muji; // Create a shop called "Muji"
     Muji.ratings = new int[recent_20ratings];
     ifstream fin("ratings.txt"); // read the txt file that stores the ratings
