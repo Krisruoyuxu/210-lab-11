@@ -51,10 +51,8 @@ int main(){
     input_shop(&Muji);
     display_shop(&Muji);
 
+    delete [] all_ratings; // free the temp array
     
-    
-    
-
     return 0;
 }
 
@@ -69,7 +67,7 @@ void input_shop(Shop *Muji){
 void display_shop(Shop *Muji){
     cout << "The name of the shop is: " << Muji->name << endl;
     cout << "Shop ID:# " << Muji->ID << endl;
-    cout << "The ratings are as follow: ";
+    cout << "The most recent 20 ratings are as follow: ";
     for (int i =0; i < recent_20ratings; i++){
         cout << *(Muji ->ratings+i) << " ";
     }
